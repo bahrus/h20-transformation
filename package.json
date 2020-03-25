@@ -1,0 +1,19 @@
+{
+  "name": "h2o-transformation",
+  "version": "0.0.0",
+  "description": "TBD",
+  "main": "h2o-transformation",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahrus/h2o-transformation.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahrus/h2o-transformation/issues"
+  },
+  "homepage": "https://github.com/bahrus/h2o-transformation#readme"
+}
