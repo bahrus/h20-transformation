@@ -44,7 +44,7 @@ But when we upgrade / enhance the unknown element to a known element, we want to
 
 If this is done in the slotchange event, it will typically require using the main thread to convert the HTML into a JS Object, that can form (part of) the "state" or the "view model".
 
-This library endeavors to provide the opportunity to do the conversion from HTML to JS Objects **outside the main thread**, in a (service) worker, and to store that state in IndexedDB rather than RAM memory.  And it strives to provide that support not only for the initial "index.html" load, where applicable, but also on subsequent loading of HTML fragments.  The one disadvantage is the HTML will need to be parsed twice -- once by the live DOM tree, once inside the service worker.
+This library endeavors to provide the opportunity to do the conversion from HTML to JS Objects, optionally **outside the main thread** in a (service) worker, and to store that state in IndexedDB rather than RAM memory (again optionally).  And it strives to provide that support not only for the initial "index.html" load, where applicable, but also on subsequent loading of HTML fragments.  The two disadvantages of doing the processing outside the main thread, is the HTML will need to be parsed twice -- once by the live DOM tree, once inside the service worker, and there's also a (small) cost marshalling the message across thread broundaries.
 
 </details>
 
@@ -104,7 +104,7 @@ Message sent via web component:
     "command": "h2o-intercept",
     "message":{
         "requestUrl": "https://mydomain.com/myResource/",
-        "storage-location": "SessionStorage",
+        "storage-location": "IndexedDB",
         "storageKey":"a.b.c",
         "rootType": "array",
         "transform":{
@@ -124,6 +124,15 @@ Message sent via web component:
 Message sent via web component:
 
 ```html
-<h2o-lilies transform href="..." storage-location=SessionStorage storage-key=a.b.c ></h2o-lilies>
+<h2o-lilies transform href="..." storage-location=IndexedDB storage-key=a.b.c ></h2o-lilies>
 ```
+
+The web component only posts messages to the service worker if the storage-location is either "IndexedDB" or "WorkerSelf".  The possible values of storage-location are:
+
+1.  IndexedDB
+2.  WorkerSelf
+3.  SessionStorage
+4.  Local (ie stored as a property of the web component)
+
+
 
