@@ -44,7 +44,7 @@ But when we upgrade / enhance the unknown element to a known element, we want to
 
 If this is done in the slotchange event, it will typically require using the main thread to convert the HTML into a JS Object, that can form (part of) the "state" or the "view model".
 
-This library endeavors to provide the opportunity to do the conversion from HTML to JS Objects **outside the main thread**, in a (service) worker, and to store that state in IndexedDB rather than RAM memory.  And it strives to provide that support not only for the initial "index.html" load, where applicable, but also on subsequent loading of HTML fragments.
+This library endeavors to provide the opportunity to do the conversion from HTML to JS Objects **outside the main thread**, in a (service) worker, and to store that state in IndexedDB rather than RAM memory.  And it strives to provide that support not only for the initial "index.html" load, where applicable, but also on subsequent loading of HTML fragments.  The one disadvantage is the HTML will need to be parsed twice -- once by the live DOM tree, once inside the service worker.
 
 </details>
 
