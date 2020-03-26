@@ -62,7 +62,7 @@ importScripts('./h2o-sw.js');
 
 Listens for postMessages in one of two forms:
 
-### Initial Light Children Conversion Request
+### Initial, "server-rendered" Light Children Conversion Request
 
 ```JSON
 {
